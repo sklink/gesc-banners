@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>Select Banner Logo</h1>
+    <ul class="logo-switches">
+      <li><button value="dc">Digital Chaos</button></li>
+      <li><button value="eg">Evil Geniuses</button></li>
+      <li><button value="finaltribe">The Final Tribe</button></li>
+      <li><button value="fnatic">Fnatic</button></li>
+      <li><button value="infamous">Infamous</button></li>
+      <li><button value="navi">Natus Vincere</button></li>
+      <li><button value="rex">Rex Regum Qeon</button></li>
+      <li><button value="vgj">VGJ.Thunder</button></li>
+    </ul>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+
+      $('.logo-switches li button').click(function(e) {
+        socket.emit('switch', $(e.currentTarget).val())
+      })
+    </script>
+  </body>
+</html>
