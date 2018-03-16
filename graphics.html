@@ -15,8 +15,11 @@
 		</style>
 	</head>
   <body>
-    <div class="banner">
-			<img class="logo" src="/images/dc.png" />
+    <div class="banner banner_a">
+			<img id="logo_a" class="logo logo_a" src="/images/dc.png" />
+    </div>
+    <div class="banner banner_b">
+			<img id="logo_b" class="logo logo_b" src="/images/dc.png" />
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -24,10 +27,11 @@
     <script>
       var socket = io();
 
-      socket.on('switch', function (team) {
-      	console.log("Switching team logo...", team);
+      socket.on('switch', function (data) {
+      	var side = data.split('_')[1];
+      	var team = data.split('_')[0];
 
-      	$('.logo').attr('src', `/images/${team}.png`);
+      	$(`.logo_${side}`).attr('src', `/images/${team}.png`);
       });
     </script>
   </body>
